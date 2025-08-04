@@ -4,6 +4,7 @@
 :root{
  --color-main: rgb(233, 222, 212);
  --color-main-a20: rgba(233, 222, 212, .2);
+ --color-marquee: rgb(245, 73, 50);
 
  --text-shadow: 0 0 .6rem rgba(0, 0, 0, .8);
 
@@ -29,8 +30,9 @@ body{
 body > main{
  display: flex;
  flex-direction: column;
- justify-content: center;
- align-items: center
+ justify-content: space-between;
+ align-items: center;
+ min-height: 100vh;
 }
 
 body > main > *{
@@ -42,8 +44,44 @@ body > main > *{
 .wrappers{
  width: 100%;
  max-width: var(--width-max);
- min-height: 100vh;
 }
+
+/* < marquee */
+@keyframes marquee {
+ 0% {
+  transform: translateX(0%);
+ }
+ 100% {
+  transform: translateX(-100%);
+ }
+}
+
+.marquee{
+ background-color: rgb(245, 73, 50);
+ color: white;
+ display: flex;
+ justify-content: center;
+ gap: 12px;
+ overflow: hidden;
+ text-transform: uppercase;
+ white-space: nowrap;
+ width: 100%;
+}
+
+.marquee__list{
+ animation: marquee 10s linear infinite;
+ display: flex;
+ justify-content: center;
+ gap: 12px;
+ list-style-type: disc;
+ width: 100%;
+}
+
+.marquee__item{
+ padding: 18px 0;
+}
+/* > marquee */
+
 
 /* < accessory */
 .visible-border{
@@ -51,9 +89,16 @@ body > main > *{
 }
 /* > accessory */
 
+
 /* < header */
 .header{
  background-color: var(--color-main);
+ flex-direction: column;
+ align-items: center;
+}
+
+.header__wrapper{
+
 }
 /* > header */
 
@@ -76,6 +121,15 @@ body > main > *{
 /* < footer */
 .footer{
  background-color: var(--color-main);
+ color: rgb(49, 49, 49);
+
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.footer__wrapper{
+ padding: 40px 72px 72px 72px;
 }
 /* > footer */
 
