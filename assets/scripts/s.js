@@ -278,10 +278,26 @@ const handleSwipe = () => {
     const slides = document.querySelectorAll('.slide')
     const prevBtn = document.querySelector('.slider-arrow.prev')
     const nextBtn = document.querySelector('.slider-arrow.next')
-    const dots = document.querySelectorAll('.slider-dots')
 
     let currentSlide = 0
     const slideCount = slides.length
+
+    const goToSlide = (index) => {
+        currentSlide = index
+        updateSlider()
+    }
+
+    const dotsContainer = document.querySelector('.slider-dots')
+    Array.from(slides).forEach((slide, k) => {
+        const dot = document.createElement('div')
+        dot.classList.add('slider-dot')
+        dot.addEventListener('click', () => {
+            goToSlide(k)
+        })
+
+        dotsContainer.append(dot)
+    })
+    const dots = document.querySelectorAll('.slider-dot')
 
     const updateSlider = () => {
         slider.style.transform = `translateX(-${currentSlide * 100}%)`
@@ -301,18 +317,6 @@ const handleSwipe = () => {
         updateSlider()
     }
     prevBtn.addEventListener('click', prevSlide)
-
-    function goToSlide(index) {
-        currentSlide = index
-        updateSlider()
-    }
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const slideIndex = parseInt(this.getAttribute('data-index'))
-            goToSlide(slideIndex)
-        })
-    })
 
     updateSlider()
 }
