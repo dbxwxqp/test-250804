@@ -858,6 +858,11 @@ h1{
   order: 2;
  }
 }
+@media all and (max-width: 540px){
+ .participants__header{
+  font-size: 36px;
+ }
+}
 /* > participants */
 
 /* < footer */
